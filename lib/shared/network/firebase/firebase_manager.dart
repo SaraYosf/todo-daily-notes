@@ -113,6 +113,12 @@ class FirebaseManager {
       onError("wrong Email or password");
     }
   }
+
+  static Future<UserModel?> readUser(String userId)async{
+   DocumentSnapshot<UserModel> userDoc=await getUserCollection().doc(userId).get();
+return userDoc.data();
+  }
+
 static Future resetPassword(String email) async{
     try{
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);

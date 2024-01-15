@@ -12,10 +12,13 @@ class SettingsTab extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          SittingTextField(txt: "English",head:"Language" ),
-          SittingTextField(txt: "light",head: "lightness",)
+          SittingTextField(txt: "English",head:"Language" ,bottomSheet: (){}),
+          SittingTextField(txt: "light",head: "lightness",bottomSheet: (){})
         ],
       ),
     );
   }
+
+
+
 }

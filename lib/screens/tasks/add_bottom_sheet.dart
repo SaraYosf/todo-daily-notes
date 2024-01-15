@@ -79,7 +79,7 @@ class _AddBottomSheetState extends State<AddBottomSheet> {
                     context: context,
                     builder: (context) {
                       return AlertDialog(
-                        title: const Text("succfully"),
+                        title: const Text("successfully"),
                         content: Text("Your task is added at ${selectedDate.toString().substring(0, 10)}"),
                         actions: [
                           ElevatedButton(

@@ -23,6 +23,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double wid=0;
+    double high=0;
     return Padding(
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 22),
         child: Form(
@@ -98,18 +100,28 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               InkWell(
                 onTap: () {
+                   showDialog(
+                    barrierDismissible: false,
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      actions: [
+                        ElevatedButton(
+                            onPressed: () {
 
-                 FirebaseManager.resetPassword(emailController.text.trim()).then((value) {
-                   Container(
-                     width: 500,
-                     height: 200,
-                     color: Colors.red,
-                     child: const Text("check your mail to reset password",style: TextStyle(color: Colors.white),),
-                   );
-                 });
+
+                              Navigator.pop(context);
+                            },
+                            child: const Text("okay"))
+                      ],
+                      title: const Text("alert"),
+                      content: Text("check your mail to reset password"),
+                    ),
+                  );
+
+                FirebaseManager.resetPassword(emailController.text.trim());
 
                 },
-                child: const Center(child: Text("forget password ",style: TextStyle(color: Colors.blue),)),
+                child: const Center(child: Text("forget password ?",style: TextStyle(color: Colors.blue),)),
               ),
               const SizedBox(height: 50,),
               InkWell(
@@ -120,7 +132,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   });
 
                 },
-                  child: Image.asset('assets/images/google-logo.png',width: 50,height: 50,),)
+                  child: Image.asset('assets/images/google-logo.png',width: 50,height: 50,),),
+
             ],
           ),
         ));
