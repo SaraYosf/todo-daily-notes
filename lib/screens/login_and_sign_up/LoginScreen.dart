@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:provider/provider.dart';
 import 'package:todo/layouts/home_layouts.dart';
+import 'package:todo/provider/my_provider.dart';
 
 import '../../shared/network/firebase/firebase_manager.dart';
 
@@ -23,8 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double wid=0;
-    double high=0;
+  var provider=Provider.of<MyProvider>(context);
     return Padding(
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 22),
         child: Form(
@@ -72,6 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   onPressed: () {
                     FirebaseManager.login(
                         emailController.text, passwordController.text, () {
+                          provider.initUser();
                       Navigator.pushNamedAndRemoveUntil(
                           context, HomeLayouts.routeName, (route) => false);
                     }, (error) {

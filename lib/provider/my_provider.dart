@@ -16,8 +16,9 @@ if( firebaseUser!=null){
 }
   }
   initUser()async{
-userModer =await FirebaseManager.readUser(firebaseUser!.uid);
-notifyListeners();
+    firebaseUser=FirebaseAuth.instance.currentUser;
+  userModer =await FirebaseManager.readUser(firebaseUser!.uid);
+  notifyListeners();
   }
 
 }
