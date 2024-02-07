@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:todo/screens/login_and_sign_up/loginAndSignScreen.dart';
+import 'package:todo/screens/Login/LoginScreen.dart';
 import 'package:todo/screens/tasks/add_bottom_sheet.dart';
 import 'package:todo/screens/tasks/tasks_tab.dart';
 import '../screens/settings/settings_tab.dart';
@@ -31,9 +31,9 @@ class _HomeLayoutsState extends State<HomeLayouts> {
             padding: const EdgeInsets.all(14.0),
             child: InkWell(
               onTap: ()  {FirebaseAuth.instance.signOut();
-                Navigator.pushNamedAndRemoveUntil(context, LoginAndSign_up.routeName, (route) => false);
+                Navigator.pushNamedAndRemoveUntil(context, LoginScreen.routeName, (route) => false);
                 },
-                child: Icon(Icons.logout)),
+                child: const Icon(Icons.logout)),
           )
         ],
       ),
@@ -42,7 +42,7 @@ class _HomeLayoutsState extends State<HomeLayouts> {
         color: Colors.white,
         elevation: 0,
         notchMargin: 8,
-        shape: CircularNotchedRectangle(),
+        shape: const CircularNotchedRectangle(),
         child: BottomNavigationBar(
           currentIndex: index,
           backgroundColor: Colors.transparent,

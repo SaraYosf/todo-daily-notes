@@ -95,7 +95,7 @@ class FirebaseManager {
       print(e);
     }
   }
-
+/*
   static Future<void> login(String emailAddress, String password,
       Function onSuccess, Function onError) async {
     try {
@@ -112,7 +112,7 @@ class FirebaseManager {
      if(e.code=="INVALID_LOGIN_CREDENTIALS"){}
       onError("wrong Email or password");
     }
-  }
+  }*/
 
   static Future<UserModel?> readUser(String userId)async{
    DocumentSnapshot<UserModel> userDoc=await getUserCollection().doc(userId).get();
@@ -140,6 +140,7 @@ print (e.message);
     final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
 
     // Create a new credential
+
     final credential = GoogleAuthProvider.credential(
       accessToken: googleAuth?.accessToken,
       idToken: googleAuth?.idToken,
