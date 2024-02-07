@@ -12,5 +12,5 @@ class MyThemeData {
 
       )
   );
-  static ThemeData dartTheme = ThemeData();
+  static ThemeData darkTheme = ThemeData();
 }

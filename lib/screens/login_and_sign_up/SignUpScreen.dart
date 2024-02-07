@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todo/provider/my_provider.dart';
 import 'package:todo/shared/network/firebase/firebase_manager.dart';
 
 import '../../layouts/home_layouts.dart';
@@ -22,6 +24,8 @@ class _SignupScreenState extends State<SignupScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    var provider= Provider.of<MyProvider>(context);
     return Padding(
 
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 22),
@@ -59,7 +63,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   return 'please enter email';
                 }
                 final bool emailValid = RegExp(
-                    r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                    r"^[a-zA-Z0-9.a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                     .hasMatch(value);
                 if (!emailValid) {
                   return "invalid email";
@@ -88,6 +92,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         nameController.text,
                         int.parse(ageController.text),
                             () {
+                              provider.initUser();
                       Navigator.pushNamedAndRemoveUntil(
                           context, HomeLayouts.routeName, (route) => false);
                     }, (error) {

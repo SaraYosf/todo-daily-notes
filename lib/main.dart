@@ -5,8 +5,8 @@ import 'package:provider/provider.dart';
 import 'package:todo/firebase_options.dart';
 import 'package:todo/layouts/home_layouts.dart';
 import 'package:todo/provider/my_provider.dart';
+import 'package:todo/screens/Login/LoginScreen.dart';
 import 'package:todo/screens/login_and_sign_up/SignUpScreen.dart';
-import 'package:todo/screens/login_and_sign_up/loginAndSignScreen.dart';
 import 'package:todo/shared/style/theming.dart';
 
 void main() async{
@@ -27,10 +27,12 @@ class MyApp extends StatelessWidget {
     var provider =Provider.of<MyProvider>(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute:provider.firebaseUser!=null?HomeLayouts.routeName:LoginAndSign_up.routeName,
+      initialRoute:provider.firebaseUser !=null
+          ? HomeLayouts.routeName
+          : LoginScreen.routeName,
       routes: {
         HomeLayouts.routeName:(context) => const HomeLayouts(),
-        LoginAndSign_up.routeName:(context)=>const LoginAndSign_up(),
+        LoginScreen.routeName:(context)=>const LoginScreen(),
         SignupScreen.routeName:(context)=>const SignupScreen()
       },
       themeMode: ThemeMode.light,
